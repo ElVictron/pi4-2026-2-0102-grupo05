@@ -355,8 +355,9 @@ Os testes automatizados rodam a cada push no GitHub Actions (backends) e verific
 
 | Módulo | Ferramenta | Testes | Cobertura | CI | Sonar |
 |---|---|---|---|---|---|
-| Backend 1 | pytest, Ruff | 1528 (contrato e unitários, contra um PostgreSQL real) | 100% das linhas e ramos | [última execução na `main`](https://github.com/ElVictron/pi4-0101-g5-backend-1/actions/runs/43864321977) (Python 3.12 e 3.13) | [painel](https://sonarcloud.io/dashboard?id=ElVictron_pi4-0101-g5-backend-1) |
+| Backend 1 | pytest, Ruff | 1517 (contrato e unitários, contra um PostgreSQL real) | 100% das linhas e ramos | [última execução na `main`](https://github.com/ElVictron/pi4-0101-g5-backend-1/actions/runs/43864321977) (Python 3.12 e 3.13) | [painel](https://sonarcloud.io/dashboard?id=ElVictron_pi4-0101-g5-backend-1) |
 | Backend 2 | pytest, Ruff | 35 | 96% (linhas e ramos) | [última execução na `main`](https://github.com/ElVictron/pi4-0101-g5-backend-2/actions/runs/43861387679) | [painel](https://sonarcloud.io/dashboard?id=ElVictron_pi4-0101-g5-backend-2) |
+| Compose (este repositório) | pytest | 11 (serviços, TLS, dependências e variáveis do `docker-compose.yml`, em `tests/test_compose.py`) | não se aplica | roda com `python3 -m pytest tests` | não configurado |
 | Frontend | Vitest, Testing Library | 433 em 32 arquivos | 100% das linhas, 98,7% dos ramos | sem CI no GitHub (roda com `npm test`) | não configurado |
 
 O SonarQube Cloud analisa cada PR dos dois backends. Os PRs nº 6, 7 e 8 do Backend 1 e o nº 3 do Backend 2 terminaram com o **Quality Gate aprovado** e 0 problemas novos. O Sonar apontou, e nós corrigimos antes do merge: uma regra de segurança sobre `uv run` sem `--no-build` no CI do Backend 2 e o uso de `random` em um script de teste do Backend 1. Os painéis dos dois projetos, com cobertura e quality gate da `main`, são os links da tabela.
@@ -393,7 +394,7 @@ Os casos TE são a ponte entre o requisito e o teste que o confere. A coluna "On
 
 ### 7.4 Resumo da execução
 
-Última rodada: 16/11/2026. Dos 23 casos, **23 passaram**, 0 falharam e 0 não foram executados. O TE-01 foi executado com Docker em máquina Linux limpa em 11/11/2026 e repetido em 16/11/2026, já com o Backend 1 em HTTPS. Os casos de Backend (TE-02, TE-11 a TE-82) são os testes automatizados listados na coluna "Onde"; a suíte inteira (1528 + 35 + 433 testes) também passou nessa data.
+Última rodada: 16/11/2026. Dos 23 casos, **23 passaram**, 0 falharam e 0 não foram executados. O TE-01 foi executado com Docker em máquina Linux limpa em 11/11/2026 e repetido em 16/11/2026, já com o Backend 1 em HTTPS. Os casos de Backend (TE-02, TE-11 a TE-82) são os testes automatizados listados na coluna "Onde"; a suíte inteira (1517 + 11 + 35 + 433 testes) também passou nessa data.
 
 ### 7.5 Defeitos conhecidos
 
