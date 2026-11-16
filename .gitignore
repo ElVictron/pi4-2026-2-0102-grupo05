@@ -1,0 +1,4 @@
+# certificados locais (scripts/gerar-certificados.sh)
+certs/
+# capturas do teste das duas abas
+prints-docker/
